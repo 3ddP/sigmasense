@@ -14,7 +14,7 @@ url: https://3ddp.github.io # the base hostname & protocol for your site, e.g. h
 github_username: 3ddP
 
 # Set this to a github repository to be used to host comments.
-github_comments_repository:  dc25/myBlog-comments
+github_comments_repository:  3ddP/sigmasense-comment
 
 # Build settings
 
@@ -27,11 +27,11 @@ plugins:
 # Theme-specific settings
 
 minima:
-  skin: dark
+  skin: solarized-dark
   # Minima date format.
   # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
   #
-  date_format: "%d.%m.%Y [dd.mm.yyyy]"
+  date_format: "%b %d, %Y"
 
   # Generate social links in footer.
   #
@@ -60,4 +60,4 @@ minima:
 
 # Set to `true` to show excerpts on the homepage.
 #
-show_excerpts: true
+show_excerpts: false

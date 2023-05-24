@@ -2,6 +2,8 @@
 
 Here are a few instructions for the usage of this repo. This repo contains the files needed to generate a static blog website with [Jekyll](https://jekyllrb.com/). Most of the stuff in here does not have to be touched. You should only interact with the `./_posts` and `./assets/images` directories. Your blog posts in markdown go in the former, while any images used in your post go in the latter. Feel free to create new folders inside `./assets/images` **for your own blog posts**, but you will be responsible for remembering where you put your stuff. **Don't touch any files you didn't put there yourself unless you're 100% sure you know what you're doing.**
 
+* **NOTE:** it takes a while for changes to show up on the website. Wait a few minutes after pushing changes to see if they show up correctly. If more than 5~10 minutes go by, an error probably occured. You can check the logs on GitHub by going to the repository, then `Settings > Pages > pages and build deployment > build > Build with Jekyll`. You can also test locally before pushing; more on this later.
+
 ---
 
 ## Making blog posts
@@ -50,6 +52,12 @@ For simplicity, I've already created a repository [here](https://github.com/3ddP
 
 ---
 ## Using Jupyter notebooks
+Many of you like using Jupyter notebooks. The good news is that we can turn notebooks into posts for Jekyll fairly easily! After making your Jupyter notebook as usual, go to `File > Download as > Markdown (.md)` to download a compressed file that contains your notebook in markdown format along with all of the images used in the notebook. After doing this, we need to do a couple of extra steps. First, put the markdown file in the `./_posts` directory and the images in `./assets/images` (you can make a folder one level deeper, name the images whatever you want, etc.). Then, open the markdown file. You'll have to add a front matter like the ones above (in fact, you can copy-paste them from this README and make whichever modifications are needed). Next, look for the lines in the markdown file where the images are imported. Wherever there is a line of the form `![image](image-name.png)`, modify the path into `![image]({{ site.baseurl }}/assets/images/image-name.png)` (or whichever sub-path of this you chose). Done! If you're very gung-ho about this, you could easily set up a script that does this for you automatically... 
 
 ---
 ## Testing locally
+You can test the website locally before pushing. This has the advantage of reflecting changes immediately, but setup is required and not everything works exactly as it does on GitHub. You'll first need to clone the repo, but you've probably done this already. You'll also have to install Jekyll. You can find installation instructions [here](https://jekyllrb.com/docs/installation/). I suggest using WSL if you're on Windows. After installing Jekyll (which involves installing Ruby, and then Jekyll and Bundler), go to the root directory of the repository and use the command
+```
+bundle exec jekyll serve
+```
+after which Jekyll will tell you how to access the website. More info can be found [here](https://jekyllrb.com/tutorials/using-jekyll-with-bundler/). If you get errors regarding missing `Gems`, it may help to delete your local `Gemfile.lock` and then use the command `bundle install`.
